@@ -29,5 +29,7 @@ alias erc="$EDITOR ~/.${EDITOR}rc"
 
 # END ALIAS
 #
+clear
+echo "loaded custom zshrc :)"
 #
 # START EXPORTS
