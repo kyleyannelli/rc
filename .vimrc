@@ -20,6 +20,7 @@ Plugin 'dense-analysis/ale'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'ervandew/supertab'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'tpope/vim-eunuch'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
