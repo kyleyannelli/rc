@@ -20,6 +20,12 @@ Plugin 'dense-analysis/ale'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'ervandew/supertab'
 Plugin 'sheerun/vim-polyglot'
+# nerd tree plugins
+Plugin 'preservim/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'PhilRunninger/nerdtree-visual-selection'
+# end nerd tree plugins
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
