@@ -13,10 +13,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-# New 2023 Summer
+" New 2023 Summer
 Plugin 'vim-syntastic/syntastic'
 Plugin 'junegunn/fzf'
-###
+"""""""""""""""""""""""""""""""
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'
