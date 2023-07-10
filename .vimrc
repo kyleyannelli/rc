@@ -10,17 +10,24 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
+" Make the Pmenu not gross
+highlight Pmenu ctermfg=253 ctermbg=234 guifg=#eaeaea guibg=#424242
+highlight PmenuSel ctermfg=234 ctermbg=253 guifg=#424242 guibg=#eaeaea
+highlight PmenuSbar ctermfg=253 ctermbg=234 guifg=#eaeaea guibg=#424242
+highlight PmenuThumb ctermfg=234 ctermbg=253 guifg=#424242 guibg=#eaeaea
+
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 " New 2023 Summer
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 Plugin 'junegunn/fzf'
+Plugin 'christoomey/vim-tmux-navigator'
 """""""""""""""""""""""""""""""
-
+Plugin 'neoclide/coc.nvim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'
-Plugin 'dense-analysis/ale'
+" TRYING COC Plugin 'dense-analysis/ale'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'ervandew/supertab'
 Plugin 'sheerun/vim-polyglot'
@@ -48,3 +55,6 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+:set number relativenumber
+:set nu rnu
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
