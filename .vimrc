@@ -2,6 +2,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set ts=4 sw=4
 set number
+set sessionoptions+=globals
 
 let g:snipMate = { 'snippet_version' : 1 }
 " set the runtime path to include Vundle and initialize
@@ -27,6 +28,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'neoclide/coc.nvim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-obsession'
 " TRYING COC Plugin 'dense-analysis/ale'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'ervandew/supertab'
@@ -41,6 +43,11 @@ Plugin 'PhilRunninger/nerdtree-visual-selection'
 "
 " END NERD TREE PLUGINS
 "
+
+let g:leetcode_browser = 'firefox'
+let g:leetcode_solution_filetype = 'java'
+Plugin 'mbledkowski/neuleetcode.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
