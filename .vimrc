@@ -24,6 +24,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'vim-syntastic/syntastic'
 Plugin 'junegunn/fzf'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'jeetsukumaran/vim-buffergator'
 """""""""""""""""""""""""""""""
 Plugin 'neoclide/coc.nvim'
 Plugin 'vim-airline/vim-airline'
