@@ -3,6 +3,8 @@ filetype off                  " required
 set ts=4 sw=4
 set number
 set sessionoptions+=globals
+let mapleader = ' '
+nmap <silent> <leader>a v<Plug>(coc-codeaction-selected)
 
 let g:snipMate = { 'snippet_version' : 1 }
 " set the runtime path to include Vundle and initialize
@@ -16,6 +18,9 @@ highlight Pmenu ctermfg=253 ctermbg=234 guifg=#eaeaea guibg=#424242
 highlight PmenuSel ctermfg=234 ctermbg=253 guifg=#424242 guibg=#eaeaea
 highlight PmenuSbar ctermfg=253 ctermbg=234 guifg=#eaeaea guibg=#424242
 highlight PmenuThumb ctermfg=234 ctermbg=253 guifg=#424242 guibg=#eaeaea
+
+" autocmd ColorScheme * highlight CocHighlightText     ctermfg=LightMagenta    guifg=LightMagenta
+:highlight CocInlayHint ctermfg=235 ctermbg=14
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
