@@ -1,7 +1,7 @@
 if [ -z "$TMUX_PANE" ]; then
     tmux attach-session -t 0 || tmux new-session -n main
 fi
-EDITOR="vim"
+EDITOR="nvim"
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
@@ -30,6 +30,9 @@ alias ll="ls -alF"
 alias zrc="$EDITOR ~/.zshrc"
 alias rfsh="exec zsh"
 alias erc="$EDITOR ~/.${EDITOR}rc"
+
+export JAVA_HOME=/usr/local/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+export PATH=$JAVA_HOME/bin:$PATH
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -137,6 +140,7 @@ test -f "/Users/kyle/.xmake/profile" && source "/Users/kyle/.xmake/profile"
 # <<< xmake <<<
 export VCPKG_ROOT=$(brew --prefix vcpkg)
 
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/Users/kyle/Scripts/tmux-zshz:$PATH"
 alias vcpkg="/Users/kyle/vcpkg/vcpkg"
@@ -146,11 +150,28 @@ autoload bashcompinit
 bashcompinit
 source /Users/kyle/vcpkg/scripts/vcpkg_completion.zsh
 
+
+alias push-github="/Users/kyle/Scripts/push-to-github-interactive.zsh"
 alias ll="ls -alF"
 alias vim-be-good="docker run -it --rm brandoncc/vim-be-good:latest"
 alias cheat-sheet="~/Scripts/cht.sh"
 
 source ~/Scripts/cd-random.sh
+source ~/Scripts/dir
 
 alias lazy-cpp='/Users/kyle/.local/bin/kmfg/lazy-cpp/lazy-cpp.sh'
 export CPP_LAZY_VERSION=0.3.0-beta
+
+alias nproc="sysctl -n hw.logicalcpu"
+alias multipass="~/Scripts/multipass-wrapper.sh"
+alias multipass-shutdown="sudo launchctl bootout system /Library/LaunchDaemons/com.canonical.multipassd.plist"
+alias adguard="sudo /Applications/AdGuardHome/AdGuardHome -s"
+alias show-used-ports="netstat -an | grep LISTEN"
+alias tailf="${HOME}/Scripts/tailf/tailf.sh"
+alias cd-random="cd_random"
+alias cdr="cd_random"
+alias vim="nvim"
+alias vi="nvim"
+alias rmf="rm -rf"
+alias cdr="cd_random"
+alias cdrd="cd_random_clean"
