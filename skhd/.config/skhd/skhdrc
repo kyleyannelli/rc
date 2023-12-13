@@ -1,0 +1,48 @@
+###
+# The following yabai binds are essentially the GlazeWM defaults
+###
+
+###
+# Yabai
+###
+
+### Basic Movement
+# Focus
+alt - j : ~/.config/yabai/focus_direction.sh south
+alt - k : ~/.config/yabai/focus_direction.sh north
+alt - h : ~/.config/yabai/focus_direction.sh west
+alt - l : ~/.config/yabai/focus_direction.sh east
+# Swapping
+alt + shift - j : ~/.config/yabai/move_direction.sh south
+alt + shift - k : ~/.config/yabai/move_direction.sh north
+alt + shift - h : ~/.config/yabai/move_direction.sh west
+alt + shift - l : ~/.config/yabai/move_direction.sh east
+# Desktops (via MissionControl shortcut)
+alt - 1 : skhd -k "ctrl - 1"
+alt - 2 : skhd -k "ctrl - 2"
+alt - 3 : skhd -k "ctrl - 3"
+alt - 4 : skhd -k "ctrl - 4"
+alt - 5 : skhd -k "ctrl - 5"
+alt - 6 : skhd -k "ctrl - 6"
+alt - 7 : skhd -k "ctrl - 7"
+alt - 8 : skhd -k "ctrl - 8"
+alt - 9 : skhd -k "ctrl - 9"
+# Make higher numbers a bit easier
+# 	(Numbers 5 & 6 move my hands out of position)
+alt + shift - 1 : skhd -k "ctrl - 5"
+alt + shift - 2 : skhd -k "ctrl - 6"
+alt + shift - 3 : skhd -k "ctrl - 7"
+alt + shift - 4 : skhd -k "ctrl - 8"
+
+# Toggles focused window between fullscreen
+alt - x : yabai -m window --toggle zoom-fullscreen
+
+# Toggles focused window between float
+alt + shift - space : yabai -m window --toggle float
+
+# Close current window
+alt + shift - q : yabai -m window --close
+
+# Restart yabai
+alt + shift - r : yabai --restart-service
+
