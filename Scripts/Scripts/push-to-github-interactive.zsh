@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-GITHUB_TOKEN=$(cat "${HOME}/.github_token)
+GITHUB_TOKEN=$(cat "${HOME}/.github_token")
 
 GITHUB_PUSH="git push https://${GITHUB_TOKEN}@github.com/"
 
