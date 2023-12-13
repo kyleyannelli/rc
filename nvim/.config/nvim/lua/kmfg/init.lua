@@ -1,5 +1,5 @@
 require("kmfg.remap")
-require("kmfg.packer")
+require("kmfg.lazy")
 require("kmfg.set")
 
 vim.api.nvim_create_autocmd("VimEnter", {
