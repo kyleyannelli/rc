@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Get the current session name
+current_session=$(tmux display-message -p '#S')
+
+# Count the number of windows in the current session
+window_count=$(tmux list-windows | wc -l)
+
+# If this is the last window in the session
+if [ "$window_count" -eq 1 ]; then
+    # Get the name of the last session (excluding the current one)
+    last_session=$(tmux list-sessions -F '#{session_name}' | grep -v "^$current_session$" | tail -n1)
+
+    # If there is another session to switch to
+    if [ ! -z "$last_session" ]; then
+        # Switch to the last session
+        tmux switch-client -t "$last_session"
+        # Then kill the pane in the original session
+        tmux kill-session -t "$current_session"
+    else
+        # Just kill the current pane (which will end the session)
+        tmux kill-pane
+    fi
+else
+    # Just kill the current pane
+    tmux kill-pane
+fi
+
