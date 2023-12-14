@@ -27,7 +27,14 @@ require("lazy").setup({
         end
     },
     -- Only syntax coloring. NOT AN LSP
-    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
+        defaults = {
+            lazy = false,
+            version = nil,
+        },
+    },
     -- Easier file marking
     {
         {
