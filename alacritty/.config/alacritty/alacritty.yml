@@ -16,3 +16,6 @@ font:
 
 import:
   - ~/.config/alacritty/themes/themes/pencil_dark.yaml
+
+key_bindings:
+  - { key: I, mods: Control, chars: "\u0019" }
