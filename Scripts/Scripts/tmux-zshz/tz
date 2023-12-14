@@ -2,10 +2,10 @@
 
 source ~/.oh-my-zsh/plugins/z/z.plugin.zsh
 
-# Make sure the query has been passed
+# Make sure the directory query has been passed
 if [[ -z "$1" ]]; then
-	echo "Please provide a directory to go into. Ex: tz KMusicBot"
-	exit 1
+        echo "Please provide a directory to go into. Ex: tz KMusicBot"
+        exit 1
 fi
 
 # use z to find the most recent with -e which just prints it
@@ -13,18 +13,33 @@ directory=$(zshz -e "$1")
 
 # Check that something was actually found
 if [[ -z "$directory" ]]; then
-	echo "No directory found via query, $1"
-	exit 1
+        echo "No directory found via query, $1"
+        exit 1
 fi
 
 # basename is a cool tool that just extracts the final part of a dir
 window_name=$(basename $directory)
 
-# Now create a new tmux window
-# First, make sure it doesn't already exist
-if tmux list-windows -F '#{window_name}' | grep -q "^$window_name$"; then
-	tmux select-window -t "$window_name"
+# Check if a session name is provided, else default to 'default_session'
+session_name=$window_name
+
+# Create or attach to the session with the provided name
+if tmux has-session -t "$session_name" 2>/dev/null; then
+  echo "Switching to existing session: $session_name"
+  # Switch to the target session if it exists
+  tmux switch-client -t "$session_name"
 else
-	tmux new-window -c "$directory" -n "$window_name"
+  echo "Creating new session: $session_name"
+  tmux new-session -d -s "$session_name" -c "$directory"
+  # If the session is newly created, switch to it
+  tmux switch-client -t "$session_name"
+fi
+
+# Now create a new tmux window in the specified session
+# First, make sure it doesn't already exist in the session
+if tmux list-windows -t "$session_name" -F '#{window_name}' | grep -q "^$window_name$"; then
+        tmux select-window -t "$session_name:$window_name"
+else
+      tmux rename-window -t "$session_name:0" "$window_name"
 fi
 
