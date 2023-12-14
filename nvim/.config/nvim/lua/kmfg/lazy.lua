@@ -24,6 +24,13 @@ require("lazy").setup({
         name = 'monokai-pro',
         config = function()
             vim.cmd('colorscheme monokai-pro')
+            -- Make the background transparent
+            vim.api.nvim_set_hl(0, "Normal", { bg = "none"  })
+            vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none"  })
+
+            -- remove num line bg
+            vim.api.nvim_set_hl(0, "LineNr", { fg = "#696969", bg = "NONE" })
+            vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
         end
     },
     -- Only syntax coloring. NOT AN LSP
@@ -78,8 +85,9 @@ require("lazy").setup({
             indent = {
                 char = "│",
                 tab_char = "│",
+                highlight = "Whitespace",
             },
-            scope = { enabled = false },
+            scope = { enabled = true },
             exclude = {
                 filetypes = {
                     "help",
@@ -130,6 +138,4 @@ require("lazy").setup({
             })
         end,
     },
-
-
 })
