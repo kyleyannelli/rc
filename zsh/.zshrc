@@ -1,5 +1,5 @@
 if [ -z "$TMUX_PANE" ]; then
-    tmux attach-session -t 0 || tmux new-session -n main
+    tmux a || tmux new-session -s main -n main
 fi
 EDITOR="nvim"
 export ZPLUG_HOME=/usr/local/opt/zplug
