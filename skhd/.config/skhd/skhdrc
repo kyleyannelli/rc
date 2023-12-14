@@ -43,7 +43,7 @@ alt + shift - 4 : skhd -k "ctrl - 8"
 alt - x : yabai -m window --toggle zoom-fullscreen
 
 # Toggles focused window between float
-alt + shift - space : yabai -m window --toggle float
+alt + shift - space : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # Close current window
 alt + shift - q : yabai -m window --close
@@ -51,3 +51,8 @@ alt + shift - q : yabai -m window --close
 # Restart yabai
 alt + shift - r : yabai --restart-service
 
+# Restart skhd
+alt + shift - s : skhd --stop-service && skhd --start-service
+
+# Balance BSP
+alt - space : yabai -m space --balance
