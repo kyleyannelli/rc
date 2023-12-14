@@ -8,7 +8,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 
 -- Keeps cursor in middle when jumping pages
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-s>", "<C-u>zz")
 -- Keeps cursor in the middle for search term jumping
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
