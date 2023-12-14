@@ -17,6 +17,11 @@ alt + shift - j : ~/.config/yabai/move_direction.sh south
 alt + shift - k : ~/.config/yabai/move_direction.sh north
 alt + shift - h : ~/.config/yabai/move_direction.sh west
 alt + shift - l : ~/.config/yabai/move_direction.sh east
+# Resizing
+alt - u : yabai -m window --resize left:-30:0
+alt - i : yabai -m window --resize top:0:30
+alt - o : yabai -m window --resize top:0:-30
+alt - p : yabai -m window --resize left:30:0
 # Desktops (via MissionControl shortcut)
 alt - 1 : skhd -k "ctrl - 1"
 alt - 2 : skhd -k "ctrl - 2"
