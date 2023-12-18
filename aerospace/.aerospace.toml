@@ -1,3 +1,4 @@
+
 # Place a copy of this config to ~/.aerospace.toml. After that, you can edit ~/.aerospace.toml to your liking
 # Feel free to omit keys that you don't use in your config. If the key is absent in your config the default value is taken from this config
 
@@ -156,3 +157,10 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 esc = ['reload-config', 'mode main']
 
+[workspace-to-monitor-force-assignment]
+0 = 1                            # Monitor sequence number from left to right. 1-based indexing
+1 = 1
+2 = 1
+3 = ['2', '1']        # Case insensitive regex substring
+4 = ['2', '1']        # Case insensitive regex match
+5 = ['2', '1']        # You can specify multiple patterns. The first matching pattern will be used
