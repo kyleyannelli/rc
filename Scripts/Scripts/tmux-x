@@ -6,8 +6,11 @@ current_session=$(tmux display-message -p '#S')
 # Count the number of windows in the current session
 window_count=$(tmux list-windows | wc -l)
 
+# List number of panes in window
+pane_count=$(tmux list-panes | wc -l)
+
 # If this is the last window in the session
-if [ "$window_count" -eq 1 ]; then
+if [ "$window_count" -eq 1 ] && [ "$pane_count" -eq 1 ]; then
     # Get the name of the last session (excluding the current one)
     last_session=$(tmux list-sessions -F '#{session_name}' | grep -v "^$current_session$" | tail -n1)
 
