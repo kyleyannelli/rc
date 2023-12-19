@@ -136,22 +136,20 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # >>> xmake >>>
-test -f "/Users/kyle/.xmake/profile" && source "/Users/kyle/.xmake/profile"
+test -f "${HOME}/.xmake/profile" && source "${HOME}/.xmake/profile"
 # <<< xmake <<<
 export VCPKG_ROOT=$(brew --prefix vcpkg)
 
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-export PATH="/Users/kyle/Scripts/tmux-zshz:$PATH"
-alias vcpkg="/Users/kyle/vcpkg/vcpkg"
-export VCPKG_ROOT="/Users/kyle/vcpkg"
+export PATH="${HOME}/Scripts/tmux-zshz:$PATH"
+alias vcpkg="${HOME}/vcpkg/vcpkg"
+export VCPKG_ROOT="${HOME}/vcpkg"
 
 autoload bashcompinit
 bashcompinit
-source /Users/kyle/vcpkg/scripts/vcpkg_completion.zsh
 
-
-alias push-github="/Users/kyle/Scripts/push-to-github-interactive.zsh"
+alias push-github="${HOME}/Scripts/push-to-github-interactive.zsh"
 alias ll="ls -alF"
 alias vim-be-good="docker run -it --rm brandoncc/vim-be-good:latest"
 alias cheat-sheet="~/Scripts/cht.sh"
@@ -159,7 +157,7 @@ alias cheat-sheet="~/Scripts/cht.sh"
 source ~/Scripts/cd-random.sh
 source ~/Scripts/dir
 
-alias lazy-cpp='/Users/kyle/.local/bin/kmfg/lazy-cpp/lazy-cpp.sh'
+alias lazy-cpp='${HOME}.local/bin/kmfg/lazy-cpp/lazy-cpp.sh'
 export CPP_LAZY_VERSION=0.3.0-beta
 
 alias nproc="sysctl -n hw.logicalcpu"
