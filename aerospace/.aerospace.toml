@@ -1,7 +1,6 @@
 
 # Place a copy of this config to ~/.aerospace.toml. After that, you can edit ~/.aerospace.toml to your liking
 # Feel free to omit keys that you don't use in your config. If the key is absent in your config the default value is taken from this config
-
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
 # For the list of available commands see: https://github.com/nikitabobko/AeroSpace/blob/main/docs/commands.md
@@ -122,15 +121,16 @@ alt-8 = 'workspace 7'
 alt-9 = 'workspace 8'
 
 # See: https://github.com/nikitabobko/AeroSpace/blob/main/docs/commands.md#move-node-to-workspace
-alt-shift-0 = 'move-node-to-workspace 10'
-alt-shift-1 = 'move-node-to-workspace 0'
-alt-shift-2 = 'move-node-to-workspace 1'
-alt-shift-3 = 'move-node-to-workspace 2'
-alt-shift-4 = 'move-node-to-workspace 3'
-alt-shift-5 = 'move-node-to-workspace 4'
-alt-shift-6 = 'move-node-to-workspace 5'
-alt-shift-7 = 'move-node-to-workspace 7'
-alt-shift-9 = 'move-node-to-workspace 8'
+alt-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
+alt-shift-1 = ['move-node-to-workspace 0', 'workspace 0']
+alt-shift-2 = ['move-node-to-workspace 1', 'workspace 1']
+alt-shift-3 = ['move-node-to-workspace 2', 'workspace 2']
+alt-shift-4 = ['move-node-to-workspace 3', 'workspace 3']
+alt-shift-5 = ['move-node-to-workspace 4', 'workspace 4']
+alt-shift-6 = ['move-node-to-workspace 5', 'workspace 5']
+alt-shift-7 = ['move-node-to-workspace 6', 'workspace 6']
+alt-shift-8 = ['move-node-to-workspace 7', 'workspace 7']
+alt-shift-9 = ['move-node-to-workspace 8', 'workspace 8']
 
 # See: https://github.com/nikitabobko/AeroSpace/blob/main/docs/commands.md#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -158,9 +158,29 @@ alt-shift-l = ['join-with right', 'mode main']
 esc = ['reload-config', 'mode main']
 
 [workspace-to-monitor-force-assignment]
-0 = 1                            # Monitor sequence number from left to right. 1-based indexing
-1 = 1
-2 = 1
-3 = ['2', '1']        # Case insensitive regex substring
-4 = ['2', '1']        # Case insensitive regex match
-5 = ['2', '1']        # You can specify multiple patterns. The first matching pattern will be used
+0 = 2                          # Monitor sequence number from left to right. 1-based indexing
+1 = 2
+2 = 2
+3 = ['1', '2']        # Case insensitive regex substring
+4 = ['1', '2']        # Case insensitive regex match
+5 = ['1', '2']        # You can specify multiple patterns. The first matching pattern will be used
+
+[[on-window-detected]]
+if.app-id = 'net.mullvad.vpn'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.crystalidea.macsfancontrol'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.FaceTime'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.PhotoBooth'
+run = 'layout floating'
