@@ -11,6 +11,8 @@ lsp_zero.on_attach(function(client, bufnr)
 
 end)
 
+require('fidget').setup({})
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
 	-- Replace the language servers listed here 

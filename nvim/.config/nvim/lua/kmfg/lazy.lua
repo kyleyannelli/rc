@@ -59,6 +59,7 @@ require("lazy").setup({
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
         dependencies = {
+            {"j-hui/fidget.nvim"},
             --- Uncomment these if you want to manage LSP servers from neovim
             {'williamboman/mason.nvim'},
             {'williamboman/mason-lspconfig.nvim'},
@@ -138,4 +139,5 @@ require("lazy").setup({
             })
         end,
     },
+    "nvim-tree/nvim-web-devicons",
 })
