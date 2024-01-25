@@ -29,4 +29,7 @@ vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- Make current file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+-- Run the current file
+vim.keymap.set("n", "<leader>xr", "<cmd>!./%<CR>", { silent = true })
 
+vim.g.copilot_assume_mapped = true

@@ -16,7 +16,7 @@ require("lazy").setup({
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         -- or                            , branch = '0.1.x',
-        dependencies = { {'nvim-lua/plenary.nvim'} }
+        dependencies = { {'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep'} }
     },
     -- Color Scheme (can apply from any repo)
     {
@@ -140,4 +140,14 @@ require("lazy").setup({
         end,
     },
     "nvim-tree/nvim-web-devicons",
+    {
+        'akinsho/flutter-tools.nvim',
+        lazy = false,
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'stevearc/dressing.nvim', -- optional for vim.ui.select
+        },
+        config = true,
+    },
+    "onsails/lspkind.nvim",
 })
