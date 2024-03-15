@@ -33,3 +33,4 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>xr", "<cmd>!./%<CR>", { silent = true })
 
 vim.g.copilot_assume_mapped = true
+

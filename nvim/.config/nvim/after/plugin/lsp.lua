@@ -33,6 +33,7 @@ local java_opts = {
     -- Add your Java-specific configurations here
 }
 require('lspconfig').jdtls.setup(java_opts)
+require('lspconfig').gleam.setup{}
 
 -- Unused but decent example UnoCSS Setup (add go to it)
 --[[

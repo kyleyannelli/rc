@@ -159,5 +159,24 @@ require("lazy").setup({
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         },
-    }
+    },
+    -- Trying nvim-dap setup outlined in https://miguelcrespo.co/posts/how-to-debug-like-a-pro-using-neovim
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = { "mfussenegger/nvim-dap", "leoluz/nvim-dap-go" },
+        init = function ()
+            local dap, dapui = require("dap"), require("dapui")
+            dap.listeners.after.event_initialized["dapui_config"]=function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated["dapui_config"]=function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited["dapui_config"]=function()
+                dapui.close()
+            end
+            vim.fn.sign_define('DapBreakpoint',{ text ='🟥', texthl ='', linehl ='', numhl =''})
+            vim.fn.sign_define('DapStopped',{ text ='▶️', texthl ='', linehl ='', numhl =''})
+        end,
+    },
 })
