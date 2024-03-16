@@ -6,7 +6,5 @@ vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
 -- Help
 vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
 -- FZF Word Find (wf)
-vim.keymap.set('n', '<leader>wf', function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") });
-end)
+vim.keymap.set('n', '<leader>wf', builtin.live_grep, {})
 
