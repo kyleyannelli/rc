@@ -34,6 +34,10 @@ alias erc="$EDITOR ~/.${EDITOR}rc"
 export JAVA_HOME=/usr/local/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
 export PATH=$JAVA_HOME/bin:$PATH
 
+export GOPATH="${HOME}/go"
+PATH=$PATH:$GOPATH/bin
+
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -145,12 +149,16 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="${HOME}/Scripts/tmux-zshz:$PATH"
 alias vcpkg="${HOME}/vcpkg/vcpkg"
 export VCPKG_ROOT="${HOME}/vcpkg"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
 autoload bashcompinit
 bashcompinit
 
+JAVA_HOME="/usr/local/opt/java/"
+
 alias push-github="${HOME}/Scripts/push-to-github-interactive.zsh"
-alias ll="ls -alF"
+alias ll="ls -alFh"
 alias vim-be-good="docker run -it --rm brandoncc/vim-be-good:latest"
 alias cheat-sheet="~/Scripts/cht.sh"
 
@@ -161,16 +169,22 @@ alias lazy-cpp='${HOME}.local/bin/kmfg/lazy-cpp/lazy-cpp.sh'
 export CPP_LAZY_VERSION=0.3.0-beta
 
 alias nproc="sysctl -n hw.logicalcpu"
-alias multipass="~/Scripts/multipass-wrapper.sh"
 alias multipass-shutdown="sudo launchctl bootout system /Library/LaunchDaemons/com.canonical.multipassd.plist"
 alias adguard="sudo /Applications/AdGuardHome/AdGuardHome -s"
 alias show-used-ports="netstat -an | grep LISTEN"
 alias tailf="${HOME}/Scripts/tailf/tailf.sh"
 alias cd-random="cd_random"
 alias cdr="cd_random"
+alias dual="${HOME}/Scripts/tmux-dual"
 alias vim="nvim"
 alias vi="nvim"
 alias rmf="rm -rf"
 alias cdr="cd_random"
 alias cdrd="cd_random_clean"
+alias ccat="/bin/cat"
 alias cat="bat"
+alias cdh="cd ~"
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+
+# Created by `pipx` on 2024-03-09 16:51:03
+export PATH="$PATH:/Users/kyannelli/.local/bin"
