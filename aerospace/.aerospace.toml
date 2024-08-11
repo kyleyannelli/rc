@@ -31,17 +31,16 @@ default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 
 # Available since: 0.6.0-Beta
-gaps.inner.horizontal = 10
-gaps.inner.vertical =   10
-gaps.outer.left =       10
-gaps.outer.bottom =     10
-gaps.outer.top =        10
-gaps.outer.right =      10
+gaps.inner.horizontal = 3
+gaps.inner.vertical =   3
+gaps.outer.left =       3
+gaps.outer.bottom =     3
+gaps.outer.top =        3
+gaps.outer.right =      3
 
 # Visual indent makes it easier to understand that containers of the same orientation are nested.
 # If you have 'enable-normalization-opposite-orientation-for-nested-containers' enabled then there is no way to
 # observe the indent
-indent-for-nested-containers-with-the-same-orientation = 30
 
 # Layout of root containers of non-empty workspaces. The layout is applied only on startup
 # Possible values: smart|tiles|accordion
@@ -158,12 +157,12 @@ alt-shift-l = ['join-with right', 'mode main']
 esc = ['reload-config', 'mode main']
 
 [workspace-to-monitor-force-assignment]
-0 = 2                          # Monitor sequence number from left to right. 1-based indexing
-1 = 2
-2 = 2
-3 = ['1', '2']        # Case insensitive regex substring
-4 = ['1', '2']        # Case insensitive regex match
-5 = ['1', '2']        # You can specify multiple patterns. The first matching pattern will be used
+3 = 2                          # Monitor sequence number from left to right. 1-based indexing
+4 = 2
+5 = 2
+0 = ['1', '2']        # Case insensitive regex substring
+1 = ['1', '2']        # Case insensitive regex match
+2 = ['1', '2']        # You can specify multiple patterns. The first matching pattern will be used
 
 [[on-window-detected]]
 if.app-id = 'net.mullvad.vpn'

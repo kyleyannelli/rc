@@ -1,0 +1,23 @@
+import = ["/Users/kyannelli/.config/alacritty/themes/pencil_dark.yaml"]
+live_config_reload = true
+
+[font]
+size = 13
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[[keyboard.bindings]]
+chars = "\u0019"
+key = "I"
+mods = "Control"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 0.95
+
+[window.padding]
+x = 20
+y = 20
