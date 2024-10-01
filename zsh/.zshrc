@@ -6,6 +6,7 @@ export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug "popstas/zsh-command-time"
+zplug "jeffreytse/zsh-vi-mode"
 zplug "agkozak/zsh-z"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
