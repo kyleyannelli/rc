@@ -1,7 +1,7 @@
 #!/bin/zsh
 cd_random() {
     RANDOM_NUMBER=$RANDOM
-    DIR="/tmp/${RANDOM_NUMBER}_random"
+    DIR="/Users/kyannelli/Documents/Random/${RANDOM_NUMBER}_random"
     mkdir -p "$DIR" && cd "$DIR"
 }
 
