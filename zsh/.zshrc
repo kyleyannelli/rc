@@ -1,8 +1,8 @@
 if [ -z "$TMUX_PANE" ]; then
     tmux a || tmux new-session -s main -n main
 fi
-EDITOR="nvim"
-export ZPLUG_HOME=/usr/local/opt/zplug
+EDITOR="/opt/homebrew/bin/nvim"
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug "popstas/zsh-command-time"
@@ -32,7 +32,7 @@ alias zrc="$EDITOR ~/.zshrc"
 alias rfsh="exec zsh"
 alias erc="$EDITOR ~/.${EDITOR}rc"
 
-export JAVA_HOME=/usr/local/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+export JAVA_HOME=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
 export PATH=$JAVA_HOME/bin:$PATH
 
 export GOPATH="${HOME}/go"
@@ -156,8 +156,6 @@ export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 autoload bashcompinit
 bashcompinit
 
-JAVA_HOME="/usr/local/opt/java/"
-
 alias push-github="${HOME}/Scripts/push-to-github-interactive.zsh"
 alias ll="ls -alFh"
 alias vim-be-good="docker run -it --rm brandoncc/vim-be-good:latest"
@@ -177,8 +175,6 @@ alias tailf="${HOME}/Scripts/tailf/tailf.sh"
 alias cd-random="cd_random"
 alias cdr="cd_random"
 alias dual="${HOME}/Scripts/tmux-dual"
-alias vim="nvim"
-alias vi="nvim"
 alias rmf="rm -rf"
 alias cdr="cd_random"
 alias cdrd="cd_random_clean"
@@ -186,6 +182,9 @@ alias ccat="/bin/cat"
 alias cat="bat"
 alias cdh="cd ~"
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+alias tmr='session_name=$(jot -r -c 8 A Z | rs -g 0 8) && tab_name=$(jot -r 1 1000000 99999999) && tmux new-session -d -s $session_name -n "${tab_name}" && tmux switch-client -t $session_name'
+alias ghc="${HOME}/Scripts/clone-github.zsh"
 
 # Created by `pipx` on 2024-03-09 16:51:03
 export PATH="$PATH:/Users/kyannelli/.local/bin"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
