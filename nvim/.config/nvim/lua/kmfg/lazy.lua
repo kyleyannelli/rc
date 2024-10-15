@@ -14,9 +14,9 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     -- FZF / File Previewer
     {
-        'nvim-telescope/telescope.nvim', tag = '0.1.5',
+        'nvim-telescope/telescope.nvim', tag = '0.1.8',
         -- or                            , branch = '0.1.x',
-        dependencies = { {'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep'} }
+        dependencies = { {'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep'} },
     },
     -- Color Scheme (can apply from any repo)
     {
@@ -151,20 +151,168 @@ require("lazy").setup({
     },
     "onsails/lspkind.nvim",
     "ThePrimeagen/vim-apm",
-    {
-        "folke/trouble.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        },
-    },
     -- Trying nvim-dap setup outlined in https://miguelcrespo.co/posts/how-to-debug-like-a-pro-using-neovim
     {
         "rcarriga/nvim-dap-ui",
-        dependencies = { "mfussenegger/nvim-dap", "leoluz/nvim-dap-go" },
+        dependencies = { "mfussenegger/nvim-dap", "leoluz/nvim-dap-go", "nvim-neotest/nvim-nio" },
         init = function ()
+        end,
+    },
+    -- Laravel
+    {
+        "adalessa/laravel.nvim",
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+            "tpope/vim-dotenv",
+            "MunifTanjim/nui.nvim",
+            "nvimtools/none-ls.nvim",
+        },
+        cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" },
+        keys = {
+            { "<leader>la", ":Laravel artisan<cr>" },
+            { "<leader>ls", ":Laravel sail<cr>" },
+            { "<leader>lc", ":Laravel composer<cr>" },
+            { "<leader>lr", ":Laravel routes<cr>" },
+            { "<leader>lm", ":Laravel related<cr>" },
+        },
+        opts = {
+            features = {
+                null_ls = {
+                    enable = true,
+                },
+                route_info = {
+                    enable = true,         --- to enable the laravel.nvim virtual text
+                    position = 'right',    --- where to show the info (available options 'right', 'top')
+                    middlewares = true,    --- wheather to show the middlewares section in the info
+                    method = true,         --- wheather to show the method section in the info
+                    uri = true             --- wheather to show the uri section in the info
+                },
+            },
+        },
+        config = true,
+    },
+    {
+        "stevearc/conform.nvim",
+        lazy = true,
+        event = { "BufReadPre", "BufNewFile" },
+        config = function() 
+            local conform = require("conform")
+
+            conform.setup({ 
+                formatters_by_ft = { 
+                    php = { "php" }, 
+                }, 
+                format_on_save = { 
+                    lsp_fallback = true, 
+                    async = false, 
+                    timeout_ms = 1000, 
+                }, 
+                notify_on_error = true, 
+                formatters = { 
+                    php = { 
+                        command = "php-cs-fixer", 
+                        args = { 
+                            "fix", 
+                            "$FILENAME",
+                            "--allow-risky=no",
+                        }, 
+                        stdin = false,
+                    }
+                }
+            })
+        end,
+    },
+    {
+        "rcarriga/nvim-notify",
+        config = function()
+            local notify = require("notify")
+            -- this for transparency
+            notify.setup({ background_colour = "#000000" })
+            -- this overwrites the vim notify function
+            vim.notify = notify.notify
+        end
+    },
+    {
+        'linux-cultist/venv-selector.nvim',
+        dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
+        branch = "regexp",
+        opts = {
+            -- Your options go here
+            -- name = "venv",
+            -- auto_refresh = false
+        },
+        event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+        keys = {
+            -- Keymap to open VenvSelector to pick a venv.
+            { '<leader>vs', '<cmd>VenvSelect<cr>' },
+            -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
+            { '<leader>vc', '<cmd>VenvSelectCached<cr>' },
+        },
+    },
+    {
+        'tpope/vim-fugitive'
+    },
+    {
+        'OscarCreator/rsync.nvim',
+        build = 'make',
+        dependencies = 'nvim-lua/plenary.nvim',
+        config = function()
+            require("rsync").setup()
+        end,
+    },
+    {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup {
+                signs = {
+                    add          = { text = '+' },
+                    change       = { text = '┃' },
+                    delete       = { text = '-' },
+                    topdelete    = { text = '‾' },
+                    changedelete = { text = '~' },
+                    untracked    = { text = '┆' },
+                },
+                signs_staged = {
+                    add          = { text = '+' },
+                    change       = { text = '┃' },
+                    delete       = { text = '-' },
+                    topdelete    = { text = '‾' },
+                    changedelete = { text = '~' },
+                    untracked    = { text = '┆' },
+                },
+                signs_staged_enable = true,
+                signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+                numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
+                linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+                word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+                watch_gitdir = {
+                    follow_files = true
+                },
+                auto_attach = true,
+                attach_to_untracked = false,
+                current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+                current_line_blame_opts = {
+                    virt_text = true,
+                    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+                    delay = 1000,
+                    ignore_whitespace = false,
+                    virt_text_priority = 100,
+                    use_focus = true,
+                },
+                current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
+                sign_priority = 6,
+                update_debounce = 100,
+                status_formatter = nil, -- Use default
+                max_file_length = 40000, -- Disable if file is longer than this (in lines)
+                preview_config = {
+                    -- Options passed to nvim_open_win
+                    border = 'single',
+                    style = 'minimal',
+                    relative = 'cursor',
+                    row = 0,
+                    col = 1
+                },
+            }
         end,
     },
 })
