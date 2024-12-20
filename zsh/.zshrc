@@ -32,9 +32,6 @@ alias zrc="$EDITOR ~/.zshrc"
 alias rfsh="exec zsh"
 alias erc="$EDITOR ~/.${EDITOR}rc"
 
-export JAVA_HOME=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
-export PATH=$JAVA_HOME/bin:$PATH
-
 export GOPATH="${HOME}/go"
 PATH=$PATH:$GOPATH/bin
 
@@ -184,7 +181,8 @@ alias cdh="cd ~"
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 alias tmr='session_name=$(jot -r -c 8 A Z | rs -g 0 8) && tab_name=$(jot -r 1 1000000 99999999) && tmux new-session -d -s $session_name -n "${tab_name}" && tmux switch-client -t $session_name'
 alias ghc="${HOME}/Scripts/clone-github.zsh"
+alias tar="tar --no-mac-metadata --no-xattrs"
 
 # Created by `pipx` on 2024-03-09 16:51:03
 export PATH="$PATH:/Users/kyannelli/.local/bin"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="/Users/kyannelli/.composer/vendor/bin:$PATH"
