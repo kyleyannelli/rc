@@ -12,11 +12,27 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    {
+        'nvim-flutter/flutter-tools.nvim',
+        lazy = false,
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'stevearc/dressing.nvim', -- optional for vim.ui.select
+        },
+        config = true,
+    },
+    {
+        'tpope/vim-commentary'
+    },
+    {
+        'unblevable/quick-scope'
+    },
     -- FZF / File Previewer
     {
-        'nvim-telescope/telescope.nvim', tag = '0.1.8',
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.8',
         -- or                            , branch = '0.1.x',
-        dependencies = { {'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep'} },
+        dependencies = { { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep' } },
     },
     -- Color Scheme (can apply from any repo)
     {
@@ -25,8 +41,8 @@ require("lazy").setup({
         config = function()
             vim.cmd('colorscheme monokai-pro')
             -- Make the background transparent
-            vim.api.nvim_set_hl(0, "Normal", { bg = "none"  })
-            vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none"  })
+            vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+            vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
             -- remove num line bg
             vim.api.nvim_set_hl(0, "LineNr", { fg = "#696969", bg = "NONE" })
@@ -47,7 +63,7 @@ require("lazy").setup({
         {
             "ThePrimeagen/harpoon",
             branch = "harpoon2",
-            dependencies = { {"nvim-lua/plenary.nvim"} }
+            dependencies = { { "nvim-lua/plenary.nvim" } }
         }
     },
     -- Allows you to see, rollback to, adjust, etc.. changes that have been made in buffer similar to git hist/chlg
@@ -59,17 +75,17 @@ require("lazy").setup({
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
         dependencies = {
-            {"j-hui/fidget.nvim"},
+            { "j-hui/fidget.nvim" },
             --- Uncomment these if you want to manage LSP servers from neovim
-            {'williamboman/mason.nvim'},
-            {'williamboman/mason-lspconfig.nvim'},
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
 
             -- LSP Support
-            {'neovim/nvim-lspconfig'},
+            { 'neovim/nvim-lspconfig' },
             -- Autocompletion
-            {'hrsh7th/nvim-cmp'},
-            {'hrsh7th/cmp-nvim-lsp'},
-            {'L3MON4D3/LuaSnip'},
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'L3MON4D3/LuaSnip' },
         }
     },
     -- Gives code action pop (still miss Coc Code action menu)
@@ -155,7 +171,7 @@ require("lazy").setup({
     {
         "rcarriga/nvim-dap-ui",
         dependencies = { "mfussenegger/nvim-dap", "leoluz/nvim-dap-go", "nvim-neotest/nvim-nio" },
-        init = function ()
+        init = function()
         end,
     },
     -- Laravel
@@ -181,11 +197,11 @@ require("lazy").setup({
                     enable = true,
                 },
                 route_info = {
-                    enable = true,         --- to enable the laravel.nvim virtual text
-                    position = 'right',    --- where to show the info (available options 'right', 'top')
-                    middlewares = true,    --- wheather to show the middlewares section in the info
-                    method = true,         --- wheather to show the method section in the info
-                    uri = true             --- wheather to show the uri section in the info
+                    enable = true,      --- to enable the laravel.nvim virtual text
+                    position = 'right', --- where to show the info (available options 'right', 'top')
+                    middlewares = true, --- wheather to show the middlewares section in the info
+                    method = true,      --- wheather to show the method section in the info
+                    uri = true          --- wheather to show the uri section in the info
                 },
             },
         },
@@ -195,27 +211,28 @@ require("lazy").setup({
         "stevearc/conform.nvim",
         lazy = true,
         event = { "BufReadPre", "BufNewFile" },
-        config = function() 
+        config = function()
             local conform = require("conform")
 
-            conform.setup({ 
-                formatters_by_ft = { 
-                    php = { "php" }, 
-                }, 
-                format_on_save = { 
-                    lsp_fallback = true, 
-                    async = false, 
-                    timeout_ms = 1000, 
-                }, 
-                notify_on_error = true, 
-                formatters = { 
-                    php = { 
-                        command = "php-cs-fixer", 
-                        args = { 
-                            "fix", 
+            conform.setup({
+                formatters_by_ft = {
+                    php = { "php" },
+                    blade = { "blade-formatter" },
+                },
+                format_on_save = {
+                    lsp_fallback = true,
+                    async = false,
+                    timeout_ms = 1000,
+                },
+                notify_on_error = true,
+                formatters = {
+                    php = {
+                        command = "php-cs-fixer",
+                        args = {
+                            "fix",
                             "$FILENAME",
                             "--allow-risky=no",
-                        }, 
+                        },
                         stdin = false,
                     }
                 }
@@ -253,18 +270,10 @@ require("lazy").setup({
         'tpope/vim-fugitive'
     },
     {
-        'OscarCreator/rsync.nvim',
-        build = 'make',
-        dependencies = 'nvim-lua/plenary.nvim',
-        config = function()
-            require("rsync").setup()
-        end,
-    },
-    {
         'lewis6991/gitsigns.nvim',
         config = function()
             require('gitsigns').setup {
-                signs = {
+                signs                        = {
                     add          = { text = '+' },
                     change       = { text = '┃' },
                     delete       = { text = '-' },
@@ -272,7 +281,7 @@ require("lazy").setup({
                     changedelete = { text = '~' },
                     untracked    = { text = '┆' },
                 },
-                signs_staged = {
+                signs_staged                 = {
                     add          = { text = '+' },
                     change       = { text = '┃' },
                     delete       = { text = '-' },
@@ -280,18 +289,18 @@ require("lazy").setup({
                     changedelete = { text = '~' },
                     untracked    = { text = '┆' },
                 },
-                signs_staged_enable = true,
-                signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-                numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-                linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-                word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
-                watch_gitdir = {
+                signs_staged_enable          = true,
+                signcolumn                   = true,  -- Toggle with `:Gitsigns toggle_signs`
+                numhl                        = false, -- Toggle with `:Gitsigns toggle_numhl`
+                linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
+                word_diff                    = false, -- Toggle with `:Gitsigns toggle_word_diff`
+                watch_gitdir                 = {
                     follow_files = true
                 },
-                auto_attach = true,
-                attach_to_untracked = false,
-                current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-                current_line_blame_opts = {
+                auto_attach                  = true,
+                attach_to_untracked          = false,
+                current_line_blame           = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+                current_line_blame_opts      = {
                     virt_text = true,
                     virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
                     delay = 1000,
@@ -300,11 +309,11 @@ require("lazy").setup({
                     use_focus = true,
                 },
                 current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
-                sign_priority = 6,
-                update_debounce = 100,
-                status_formatter = nil, -- Use default
-                max_file_length = 40000, -- Disable if file is longer than this (in lines)
-                preview_config = {
+                sign_priority                = 6,
+                update_debounce              = 100,
+                status_formatter             = nil,   -- Use default
+                max_file_length              = 40000, -- Disable if file is longer than this (in lines)
+                preview_config               = {
                     -- Options passed to nvim_open_win
                     border = 'single',
                     style = 'minimal',
