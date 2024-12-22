@@ -16,7 +16,7 @@ mods = "Control"
 [window]
 decorations = "buttonless"
 dynamic_padding = false
-opacity = 0.95
+opacity = 0.65
 
 [window.padding]
 x = 20
