@@ -1,5 +1,5 @@
-import = ["/Users/kyannelli/.config/alacritty/themes/pencil_dark.yaml"]
-live_config_reload = true
+general.import = ["/Users/kyannelli/.config/alacritty/themes/pencil_dark.yaml"]
+general.live_config_reload = true
 
 [font]
 size = 13
@@ -16,7 +16,7 @@ mods = "Control"
 [window]
 decorations = "buttonless"
 dynamic_padding = false
-opacity = 0.65
+opacity = 0.95
 
 [window.padding]
 x = 20
