@@ -13,6 +13,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     {
+        'mg979/vim-visual-multi',
+    },
+    {
         "sphamba/smear-cursor.nvim",
 
         opts = {
